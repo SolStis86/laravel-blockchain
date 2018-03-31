@@ -5,7 +5,7 @@
     "blockchain"
   ],
   "homepage": "https://github.com/solstis86/laravel-blockchain",
-  "licence": "MIT",
+  "license": "MIT",
   "require": {
     "guzzlehttp/guzzle": "~6.0"
   },
