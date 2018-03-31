@@ -1,0 +1,24 @@
+{
+  "name": "solstis86/laravel-blockchain",
+  "description": "Service for interacting with blockchain.info API",
+  "keywords": [
+    "blockchain"
+  ],
+  "homepage": "https://github.com/solstis86/laravel-blockchain",
+  "licence": "MIT",
+  "require": {
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Solstis86\\Blockchain\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solstis86\\Blockchain\\BlockchainServiceProvider"
+      ]
+    }
+  }
+}
