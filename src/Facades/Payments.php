@@ -11,10 +11,10 @@ namespace Solstis86\Blockchain\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Wallet extends Facade
+class Payments extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'blockchain.wallet';
+        return 'blockchain.payments';
     }
 }

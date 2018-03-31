@@ -26,10 +26,14 @@ class BlockchainServiceProvider extends ServiceProvider
         $this->app->bind('blockchain.wallet', function($app) {
             return new WalletAPI($app);
         });
+
+        $this->app->bind('blockchain.payments', function($app) {
+            return new PaymentsAPI($app);
+        });
     }
 
     public function provides()
     {
-        return ['blockchain.wallet'];
+        return ['blockchain.wallet', 'blockchain.payments'];
     }
 }
