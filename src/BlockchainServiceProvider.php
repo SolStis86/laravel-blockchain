@@ -19,6 +19,8 @@ class BlockchainServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/blockchain.php' => config_path('blockchain.php'),
         ], 'config');
+
+        $this->loadMigrationsFrom(__DIR__.'../database/migrations');
     }
 
     public function register()
