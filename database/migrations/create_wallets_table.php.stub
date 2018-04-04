@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateWalletsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(config('blockchain.wallet_table_name'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('parent_id')->nullable()->unsigned();
+            $table->uuid('guid');
+            $table->text('password');
+            $table->string('address')->nullable();
+            $table->string('callback_id')->nullable();
+            $table->string('callback_key');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop(config('blockchain.wallet_table_name'));
+    }
+}

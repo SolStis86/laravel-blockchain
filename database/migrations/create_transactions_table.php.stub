@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTransactionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(config('blockchain.transaction_table_name'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('wallet_id')->unsigned();
+            $table->unsignedInteger('transaction_type');
+            $table->string('to_address')->nullable();
+            $table->string('from_address')->nullable();
+            $table->string('transaction_hash')->nullable();
+            $table->integer('confirmations')->nullable();
+            $table->double('value');
+            $table->timestamps();
+        });
+
+        Schema::table(config('blockchain.transaction_table_name'), function (Blueprint $table) {
+            $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->unique('transaction_hash');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop(config('blockchain.transaction_table_name'));
+    }
+}
